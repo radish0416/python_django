@@ -1,0 +1,25 @@
+{% block content %}
+<h2>Account Info</h2>
+<ul>
+    <li>Username: {{ user.username }} </li>
+    <li>Email: {{ user.email }} </li>
+    <li>PassWord:{{ user.password }}</li>
+</ul>
+<h2>My Profile</h2>
+
+<ul>
+    <li>First Name: {{ user.first_name }} </li>
+    <li>Last Name: {{ user.last_name }} </li>
+    <!--user.profile是获取用户个人信息表的数据-->
+    <li>Organization: {{ user.profile.org }} </li>
+    <li>Telephone: {{ user.profile.telephone }} </li>
+</ul>
+
+{% if user.is_authenticated %}
+<a href="{% url 'users:profile_update' user.id %}">Edit</a>
+| <a href="{% url 'users:pwd_change' user.id %}">Change Password </a> 
+| <a href="{% url 'users:logout' %}">Logout</a>
+| <a href="{% url 'users:blog' %}">blog</a>
+{% endif %}
+
+{% endblock %}

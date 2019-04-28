@@ -1,0 +1,42 @@
+{% block content %}
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+{#    <form action="/to/" method="post">#}
+    {% csrf_token %}
+{#    <select name="select">#}
+{#        <option value="login">登录</option>#}
+{#        <option value="register">注册</option>#}
+{#    </select>#}
+{#        <input type="submit" value="POST请求">#}
+    <form action="/login/">
+    <input type="submit" value="登录">
+    </form>
+    <form action="/register/">
+    <input type="submit" value="注册">
+    </form>
+{#    <button class="register" name="register" action="/login/">注册</button>#}
+{#    <button class="login" name = "login" action="/login/" >登录</button>#}
+{#    </form>#}
+{#    <script>#}
+{#    $('.register').click(function () {#}
+{#        $.ajax({#}
+{#            url:'/register/',#}
+{#            type:"get",#}
+{#            success:function (data) {#}
+{#                print(data)#}
+{#                window.location.href = 'http://127.0.0.1:8080'+data#}
+{#            }#}
+{#        })#}
+{#    });#}
+{#    $(".login").click(function () {#}
+{#        $.ajax(({#}
+{#            url:'/login/',#}
+{#            type:'get',#}
+{#            success:function (data) {#}
+{#                print(data)#}
+{#                window.location.href = 'http://127.0.0.1:8080'+data#}
+{#            }#}
+{#        }))#}
+{#    })#}
+{##}
+{#    </script>#}
+{% endblock %}

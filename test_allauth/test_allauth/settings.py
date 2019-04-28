@@ -58,7 +58,7 @@ AUTHENTICATION_BACKENDS = (
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = '1435082443@qq.com' # 你的 QQ 账号和授权码
-EMAIL_HOST_PASSWORD = 'tvfswfyjsxnehaeb'
+EMAIL_HOST_PASSWORD = 'tvfswfyjsxnehaeb'  #邮箱授权码
 EMAIL_USE_TLS = True  # 这里必须是 True，否则发送不成功
 EMAIL_FROM = '1435082443@qq.com' # 你的 QQ 账号
 DEFAULT_FROM_EMAIL = '1435082443@qq.com'
@@ -78,7 +78,7 @@ ROOT_URLCONF = 'test_allauth.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  #设置新建templates文件夹的路劲
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
