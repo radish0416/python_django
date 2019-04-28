@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入jquery   重要-->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<button class="s1">send_ajax</button>
+<p class="name"></p>
+<hr>
+<input type="text" id="n1">+<input type="text" id="n2">=<input type="text" id="n3"><button class="cal">点击</button>
+<hr>
+{% csrf_token %}   <!--随机生成token，在传递数据的时候带上token进行后台校验使用-->
+<p>验证用户是否存在</p>
+<input type="text" id="user"><span></span>
+<script>
+    //ajax无参传递数据
+    $(".s1").click(function () {
+        //触发ajax事件
+        $.ajax({
+            url:"/ajax_handle/",
+            type:"get",  //默认传递方式为get
+            success:function (data) {   //回调函数，就是请求成功后执行的函数
+                console.log(data)
+                $(".name").html(data)
+            }
+            }
+        )
+    });
+
+    //ajax有参传递数据
+    $(".cal").click(function () {
+        $.ajax({
+            url:"/cal/",
+            data:{"num1":$("#n1").val(),"num2":$("#n2").val()},
+            success:function (data) {
+                console.log(data)
+                $("#n3").val(data)
+            }
+        })
+    });
+
+    //不使用按钮，按回车键进行数据的传递，验证用户是否存在
+    $('#user').blur(function () {  //回车光标消失触发该事件
+        $.ajax({
+            url:"/clean_user/",
+            type:"post",   //请求类型是post请求
+            data:{"user":$("#user").val(),
+                "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()
+            },
+            success:function (data) {
+                console.log(data)
+                var data = JSON.parse(data)  //对传回的数据进行json反序列化操作，转成正常数据类型
+                if (data.is_reg)  //判断该用户是否存在
+                    //找到输入框后一个控件也就是span标签，然后内容填入"该用户已经注册"，css样式设置为红色
+                    $("#user").next().html('该用户已经注册').css("color","red")
+            }
+        })
+    })
+</script>
+</body>
+</html>

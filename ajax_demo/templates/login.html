@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+{# 利用django的forms类进行快速的创建表单：方式一 #}
+{#<form action="" method="post" novalidate>#}
+{#    {% csrf_token %}#}
+    {#直接使用后台创建的LoginForm类的字段，进行自动创建界面的表单#}
+{#    {{ form.as_p }}#}
+{#    <input type="submit" value="提交">#}
+{#</form>#}
+{#<hr>#}
+{# 方式二 #}
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    <div><lable>用户:</lable>{{ form.user }}<span style="color: red">{{ form.errors.user.0 }}</span>
+    </div>
+    <div><lable>密码:</lable>{{ form.pwd }}<span style="color: red">{{ form.errors.pwd.0 }}</span>
+    </div>
+    <div><lable>年龄:</lable>{{ form.age }}<span style="color: red">{{ form.errors.age.0 }}</span>
+    </div>
+    <div><lable>邮箱:</lable>{{ form.email }}<span style="color: red">{{ form.errors.email.0 }}</span>
+    </div>
+<input type="submit" value="提交"><span style="color:red">{{ all_error.0 }}</span>
+</form>
+</html>
