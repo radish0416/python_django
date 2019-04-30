@@ -18,5 +18,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/',include('allauth.urls'))
+    path('accounts/',include('allauth.urls'))  #引入allauth文件夹的url，然后进行跳转到allauth里面的代码
 ]

@@ -33,8 +33,8 @@ class EmailAddress(models.Model):
     class Meta:
         verbose_name = _("email address")
         verbose_name_plural = _("email addresses")
-        if not app_settings.UNIQUE_EMAIL:
-            unique_together = [("user", "email")]
+        # if not app_settings.UNIQUE_EMAIL:
+        #     unique_together = [("user", "email")]
 
     def __str__(self):
         return "%s (%s)" % (self.email, self.user)
