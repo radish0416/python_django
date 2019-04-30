@@ -102,6 +102,7 @@ def logout(request):
     auth.logout(request)
     return HttpResponseRedirect("/accounts/login/")
 
+
 #修改密码
 @login_required
 def pwd_change(request, pk):
